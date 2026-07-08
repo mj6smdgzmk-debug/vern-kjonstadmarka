@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  ::selection { background: #c8d6c0; }
+</style>
+</helmet>
+
+<div style="background:#f6f4ee; color:#23261f; font-family:'Public Sans',system-ui,sans-serif; -webkit-font-smoothing:antialiased; line-height:1.55; overflow-x:hidden;">
+
+  <!-- NAV -->
+  <header style="position:sticky; top:0; z-index:50; background:rgba(246,244,238,0.88); backdrop-filter:blur(10px); border-bottom:1px solid #e2ddd0;">
+    <nav style="max-width:1200px; margin:0 auto; padding:16px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px;">
+      <a href="#top" style="display:flex; align-items:center; text-decoration:none; color:inherit;">
+        <img src="images/logo.jpeg" alt="Vern Kjønstadmarka" style="height:54px; width:auto; display:block; mix-blend-mode:multiply;">
+      </a>
+      <div style="display:flex; align-items:center; gap:28px; font-size:14.5px; font-weight:500;">
+        <a href="#saken" style="color:#4a4d43; text-decoration:none;">Saken</a>
+        <a href="#omradet" style="color:#4a4d43; text-decoration:none;">Området</a>
+        <a href="#bidra" style="color:#4a4d43; text-decoration:none;">Bidra</a>
+        <a href="barnas-side.html" style="color:#4a4d43; text-decoration:none;">Barnas side</a>
+        <a href="media.html" style="color:#4a4d43; text-decoration:none;">Media</a>
+        <a href="#kontakt" style="color:#4a4d43; text-decoration:none;">Kontakt</a>
+        <a href="#medlem" style="background:#1f3a2b; color:#f6f4ee; text-decoration:none; padding:9px 18px; border-radius:999px; font-weight:600;">Bli medlem</a>
+      </div>
+    </nav>
+  </header>
+
+  <span id="top"></span>
+
+  <!-- STATUS BANNER -->
+  <sc-if value="{{ showStatusBanner }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#1f3a2b; color:#e9ecdf;">
+      <div style="max-width:1200px; margin:0 auto; padding:12px 32px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; font-size:14px;">
+        <span style="background:#b5623a; color:#fff; font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; border-radius:4px;">Aktuelt nå</span>
+        <span style="flex:1; min-width:240px;">Konsekvensutredningen er ute på høring. Frist for å sende merknad: <strong style="color:#fff;">15. september 2026</strong></span>
+        <a href="#bidra" style="color:#fff; font-weight:600; text-decoration:underline; text-underline-offset:3px;">Slik kan du hjelpe →</a>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- HERO -->
+  <section style="max-width:1200px; margin:0 auto; padding:72px 32px 40px;">
+    <div style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;">
+      <div>
+        <img src="images/logo.jpeg" alt="Vern Kjønstadmarka" style="height:132px; width:auto; display:block; margin:0 0 24px -6px; mix-blend-mode:multiply;">
+        <div style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:#3f6b4a; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:22px;">
+          <span style="width:24px; height:1.5px; background:#3f6b4a;"></span> Levanger · Trøndelag
+        </div>
+        <h1 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(44px,6vw,80px); line-height:1.02; letter-spacing:-0.02em; margin:0 0 24px; color:#1c2b20;">
+          La skogen<br>få stå.
+        </h1>
+        <p style="font-size:19px; line-height:1.6; color:#43463c; max-width:30em; margin:0 0 34px;">
+          Kjønstadmarka er nærturområdet der barn leker og lærer, folk går tur, fuglelivet er rikt og floraen unik. Vi arbeider for å verne <strong>hele</strong> Kjønstadmarka 4 — før siste byggetrinn tar over halvparten av den gjenværende skogen.
+        </p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="#medlem" style="background:#1f3a2b; color:#f6f4ee; text-decoration:none; padding:15px 28px; border-radius:999px; font-weight:600; font-size:16px;">Bli medlem — 100 kr/år</a>
+          <a href="#saken" style="background:transparent; color:#1f3a2b; text-decoration:none; padding:15px 26px; border-radius:999px; font-weight:600; font-size:16px; border:1.5px solid #cfc9ba;">Les saken</a>
+        </div>
+      </div>
+      <div style="position:relative;">
+        <div style="aspect-ratio:4/5; border-radius:18px; overflow:hidden; border:1px solid #d8d2c2; position:relative;">
+          <img id="heroPhoto" src="images/kjonstadmarka-sti.jpg" alt="Fra Kjønstadmarka" style="width:100%; height:100%; object-fit:cover; display:block; transition:opacity 0.8s ease;">
+        </div>
+        <div style="position:absolute; bottom:-22px; left:-22px; background:#f6f4ee; border:1px solid #e2ddd0; border-radius:14px; padding:16px 20px; box-shadow:0 18px 40px -18px rgba(31,58,43,0.35);">
+          <div style="font-family:'Newsreader',serif; font-size:32px; line-height:1.05; color:#b5623a;">Over<br>halvparten</div>
+          <div style="font-size:12.5px; color:#5f6155; margin-top:6px; max-width:12em;">av den gjenværende skogen forsvinner i planen</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FACTS STRIP -->
+  <section style="border-top:1px solid #e2ddd0; border-bottom:1px solid #e2ddd0; background:#f1eee5;">
+    <div style="max-width:1200px; margin:0 auto; padding:34px 32px; display:grid; grid-template-columns:repeat(4,1fr); gap:32px;">
+      <div>
+        <div style="font-family:'Newsreader',serif; font-size:34px; line-height:1; color:#1f3a2b;">Stor</div>
+        <div style="font-size:13.5px; color:#5f6155; margin-top:8px;">verdi for friluftsliv i konsekvensutredningen</div>
+      </div>
+      <div>
+        <div style="font-family:'Newsreader',serif; font-size:34px; line-height:1; color:#1f3a2b;">Ugyldig</div>
+        <div style="font-size:13.5px; color:#5f6155; margin-top:8px;">Statsforvalteren opphevet kommunens vedtak i april 2026</div>
+      </div>
+      <div>
+        <div style="font-family:'Newsreader',serif; font-size:34px; line-height:1; color:#1f3a2b;">4.</div>
+        <div style="font-size:13.5px; color:#5f6155; margin-top:8px;">og siste byggetrinn i Kjønstadmarka</div>
+      </div>
+      <div>
+        <div style="font-family:'Newsreader',serif; font-size:34px; line-height:1; color:#1f3a2b;">2026</div>
+        <div style="font-size:13.5px; color:#5f6155; margin-top:8px;">foreningen stiftet med bredt lokalt engasjement</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OM OMRÅDET -->
+  <section id="omradet" style="max-width:1200px; margin:0 auto; padding:90px 32px 20px;">
+    <div style="max-width:38em; margin-bottom:52px;">
+      <div style="font-size:13px; font-weight:600; color:#3f6b4a; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Om området</div>
+      <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(32px,4vw,50px); line-height:1.08; letter-spacing:-0.01em; margin:0 0 18px; color:#1c2b20;">Et nærturområde det ikke finnes maken til</h2>
+      <p style="font-size:17.5px; color:#43463c; margin:0;">Kjønstadmarka er et sammenhengende skogsområde omkranset av boliger og jordbrukslandskap — i gang- og sykkelavstand for dem som bor rundt. Nettopp derfor er det så mye brukt, hver eneste dag.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
+      <div style="background:#fff; border:1px solid #e6e1d4; border-radius:16px; padding:26px;">
+        <div style="width:38px; height:38px; border-radius:10px; background:#e7efe3; display:flex; align-items:center; justify-content:center; margin-bottom:16px; font-family:'Newsreader',serif; color:#3f6b4a; font-size:20px;">01</div>
+        <h3 style="font-size:18px; margin:0 0 8px; color:#1c2b20;">Barnas skog</h3>
+        <p style="font-size:14.5px; color:#5b5d51; margin:0;">Gapahuk, bålplasser, trehytter og lekeinstallasjoner sørøst i marka. Brukes jevnlig av flere klassetrinn ved Nesheim skole — også i undervisning — og av Gjemble barnehage.</p>
+      </div>
+      <div style="background:#fff; border:1px solid #e6e1d4; border-radius:16px; padding:26px;">
+        <div style="width:38px; height:38px; border-radius:10px; background:#e7efe3; display:flex; align-items:center; justify-content:center; margin-bottom:16px; font-family:'Newsreader',serif; color:#3f6b4a; font-size:20px;">02</div>
+        <h3 style="font-size:18px; margin:0 0 8px; color:#1c2b20;">Rikt naturliv</h3>
+        <p style="font-size:14.5px; color:#5b5d51; margin:0;">Rikt fugleliv og kalkkrevende flora. Utsiktspunkter, gode solforhold og et godt lydmiljø gir opplevelseskvaliteter som er sjeldne så nær tettbygde strøk.</p>
+      </div>
+      <div style="background:#fff; border:1px solid #e6e1d4; border-radius:16px; padding:26px;">
+        <div style="width:38px; height:38px; border-radius:10px; background:#e7efe3; display:flex; align-items:center; justify-content:center; margin-bottom:16px; font-family:'Newsreader',serif; color:#3f6b4a; font-size:20px;">03</div>
+        <h3 style="font-size:18px; margin:0 0 8px; color:#1c2b20;">Spor av historie</h3>
+        <p style="font-size:14.5px; color:#5b5d51; margin:0;">Rester etter eldre steinuttak og steingjerder fra tidligere jordbruk. Stiene bærer tydelig preg av at området er mye brukt gjennom generasjoner.</p>
+      </div>
+    </div>
+    <div style="margin-top:22px; aspect-ratio:24/9; border-radius:18px; overflow:hidden; border:1px solid #d8d2c2;">
+      <img src="images/barn-paa-sti.png" alt="Barn på tur langs sti i Kjønstadmarka" style="width:100%; height:100%; object-fit:cover; object-position:center 62%; display:block;">
+    </div>
+  </section>
+
+  <!-- SAKEN / TIDSLINJE -->
+  <section id="saken" style="background:#1c2b20; color:#e9ecdf; margin-top:90px;">
+    <div style="max-width:1200px; margin:0 auto; padding:90px 32px;">
+      <div style="display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px;">
+        <div>
+          <div style="font-size:13px; font-weight:600; color:#9db892; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Saken</div>
+          <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(32px,4vw,50px); line-height:1.08; letter-spacing:-0.01em; margin:0 0 20px; color:#f4f2e8;">En plan som er sendt tilbake — to ganger</h2>
+          <p style="font-size:16.5px; color:#c3c9b7; margin:0 0 18px;">Detaljregulering av Kjønstadmarka 4 er fjerde og siste byggetrinn. Planen legger opp til eneboliger, rekkehus og veger på minst halvparten av dagens friluftsområde.</p>
+          <p style="font-size:16.5px; color:#c3c9b7; margin:0;">Statsforvalteren har to ganger opphevet kommunens vedtak på grunn av mangler ved utredningen — særlig av friluftsinteresser, barn og unges bruk og folkehelse.</p>
+        </div>
+        <div style="display:flex; flex-direction:column;">
+          <div style="display:grid; grid-template-columns:130px 1fr; gap:0; border-left:1px solid #37483089;">
+            <div style="grid-column:1/3; display:grid; grid-template-columns:130px 1fr; padding:0 0 26px; position:relative;">
+              <div style="font-family:'Newsreader',serif; font-size:17px; color:#9db892; padding-left:22px; position:relative;"><span style="position:absolute; left:-6px; top:5px; width:11px; height:11px; border-radius:50%; background:#9db892; border:2px solid #1c2b20;"></span>Nov 2020</div>
+              <div style="font-size:14.5px; color:#c9cdbe;">Oppstart av planarbeidet for Kjønstadmarka 4 annonseres.</div>
+            </div>
+            <div style="grid-column:1/3; display:grid; grid-template-columns:130px 1fr; padding:0 0 26px;">
+              <div style="font-family:'Newsreader',serif; font-size:17px; color:#9db892; padding-left:22px; position:relative;"><span style="position:absolute; left:-6px; top:5px; width:11px; height:11px; border-radius:50%; background:#9db892; border:2px solid #1c2b20;"></span>Sep 2023</div>
+              <div style="font-size:14.5px; color:#c9cdbe;">Sweco legger fram planforslaget. Kommunen mener det ikke trengs konsekvensutredning, og planen legges ut på høring.</div>
+            </div>
+            <div style="grid-column:1/3; display:grid; grid-template-columns:130px 1fr; padding:0 0 26px;">
+              <div style="font-family:'Newsreader',serif; font-size:17px; color:#9db892; padding-left:22px; position:relative;"><span style="position:absolute; left:-6px; top:5px; width:11px; height:11px; border-radius:50%; background:#9db892; border:2px solid #1c2b20;"></span>Mai 2024</div>
+              <div style="font-size:14.5px; color:#c9cdbe;">Kommunestyret sender saken tilbake for «slanking» og ber om en juridisk vurdering av plikten til konsekvensutredning.</div>
+            </div>
+            <div style="grid-column:1/3; display:grid; grid-template-columns:130px 1fr; padding:0 0 26px;">
+              <div style="font-family:'Newsreader',serif; font-size:17px; color:#9db892; padding-left:22px; position:relative;"><span style="position:absolute; left:-6px; top:5px; width:11px; height:11px; border-radius:50%; background:#9db892; border:2px solid #1c2b20;"></span>Des 2024</div>
+              <div style="font-size:14.5px; color:#c9cdbe;">Full utbygging vedtas — begrunnet i kommunens økonomi — tross advokatvurdering om at KU er påkrevd.</div>
+            </div>
+            <div style="grid-column:1/3; display:grid; grid-template-columns:130px 1fr; padding:0 0 26px;">
+              <div style="font-family:'Newsreader',serif; font-size:17px; color:#e2b48f; padding-left:22px; position:relative;"><span style="position:absolute; left:-6px; top:5px; width:11px; height:11px; border-radius:50%; background:#b5623a; border:2px solid #1c2b20;"></span>Mai 2025</div>
+              <div style="font-size:14.5px; color:#e9ddd2;"><strong style="color:#fff;">Vedtaket oppheves.</strong> Klage fra Interessegruppa og Naturvernforbundet fører fram.</div>
+            </div>
+            <div style="grid-column:1/3; display:grid; grid-template-columns:130px 1fr; padding:0 0 26px;">
+              <div style="font-family:'Newsreader',serif; font-size:17px; color:#9db892; padding-left:22px; position:relative;"><span style="position:absolute; left:-6px; top:5px; width:11px; height:11px; border-radius:50%; background:#9db892; border:2px solid #1c2b20;"></span>Sep 2025</div>
+              <div style="font-size:14.5px; color:#c9cdbe;">Kommunen vedtar planen på nytt. Innbyggerforslag om statlig sikret friluftsområde faller.</div>
+            </div>
+            <div style="grid-column:1/3; display:grid; grid-template-columns:130px 1fr; padding:0 0 26px;">
+              <div style="font-family:'Newsreader',serif; font-size:17px; color:#9db892; padding-left:22px; position:relative;"><span style="position:absolute; left:-6px; top:5px; width:11px; height:11px; border-radius:50%; background:#9db892; border:2px solid #1c2b20;"></span>Okt–des 2025</div>
+              <div style="font-size:14.5px; color:#c9cdbe;">Lovlighetskontroll og ny klage behandles. Kommunen fastholder vedtaket.</div>
+            </div>
+            <div style="grid-column:1/3; display:grid; grid-template-columns:130px 1fr; padding:0 0 26px;">
+              <div style="font-family:'Newsreader',serif; font-size:17px; color:#e2b48f; padding-left:22px; position:relative;"><span style="position:absolute; left:-6px; top:5px; width:11px; height:11px; border-radius:50%; background:#b5623a; border:2px solid #1c2b20;"></span>Apr 2026</div>
+              <div style="font-size:14.5px; color:#e9ddd2;"><strong style="color:#fff;">Ugyldig — for andre gang.</strong> Statsforvalteren krever at det gjøres en konsekvensutredning som behandler virkningene for friluftsinteressene i hele planområdet, inkludert den nordlige delen — og at det vurderes i hvilken grad tilgrensende temaer som natur, barn og unge og folkehelse skal tas med.</div>
+            </div>
+            <div style="grid-column:1/3; display:grid; grid-template-columns:130px 1fr; padding:0 0 26px;">
+              <div style="font-family:'Newsreader',serif; font-size:17px; color:#9db892; padding-left:22px; position:relative;"><span style="position:absolute; left:-6px; top:5px; width:11px; height:11px; border-radius:50%; background:#9db892; border:2px solid #1c2b20;"></span>Jun 2026</div>
+              <div style="font-size:14.5px; color:#c9cdbe;">Interessegruppa tildeles Levanger SVs miljøpris 2026 for innsatsen for skogen. Foreningen <em>Vern Kjønstadmarka</em> stiftes. Ny konsekvensutredning for friluftsliv legges fram.</div>
+            </div>
+            <div style="grid-column:1/3; display:grid; grid-template-columns:130px 1fr;">
+              <div style="font-family:'Newsreader',serif; font-size:17px; color:#9db892; padding-left:22px; position:relative;"><span style="position:absolute; left:-6px; top:5px; width:11px; height:11px; border-radius:50%; background:#f6f4ee; border:2px solid #1c2b20;"></span>Nå</div>
+              <div style="font-size:14.5px; color:#c9cdbe;">KU friluftsliv er på seks ukers høring. Fristen er utsatt til 15. september 2026. Vi arbeider med et faglig tungt høringssvar.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <blockquote style="margin:64px 0 0; padding:36px 40px; background:#24422e; border-left:4px solid #e2b48f; border-radius:0 14px 14px 0;">
+        <p style="font-family:'Newsreader',serif; font-style:italic; font-size:clamp(20px,2.4vw,27px); line-height:1.45; color:#f4f2e8; margin:0;">«Slik vi ser det, kreves det en konsekvensutredning. En KU må behandle virkningene for friluftsinteressene i hele planområdet, inkludert den nordlige delen. […] Det må videre vurderes i hvilken grad tilgrensende temaer, som f.eks. natur, barn og unge og folkehelse, skal tas med.»</p>
+        <footer style="margin-top:20px; font-size:14px; color:#9db892; letter-spacing:0.02em;">Statsforvalteren i Trøndelag — vedtak i klagesak, 30.04.2026</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- MANGLER I KU -->
+  <section style="max-width:1200px; margin:0 auto; padding:90px 32px 0;">
+    <div style="max-width:38em; margin-bottom:44px;">
+      <div style="font-size:13px; font-weight:600; color:#3f6b4a; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Vårt syn</div>
+      <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(32px,4vw,50px); line-height:1.08; letter-spacing:-0.01em; margin:0 0 18px; color:#1c2b20;">Utredningen har fortsatt store hull</h2>
+      <p style="font-size:17.5px; color:#43463c; margin:0;">Vi mener den nye konsekvensutredningen for friluftsliv ikke svarer på det Statsforvalteren krevde. Blant manglene:</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:18px;">
+      <div style="display:flex; gap:16px; padding:22px; background:#fff; border:1px solid #e6e1d4; border-radius:14px;">
+        <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#b5623a; margin-top:8px;"></span>
+        <div><h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Bare ett fagtema er utredet</h3><p style="font-size:14.5px; color:#5b5d51; margin:0;">Statsforvalteren pekte på mangler som også omfattet natur, barn og unge og folkehelse. Her utredes kun friluftsliv — barn og unges bruk bare som et delaspekt, ikke som eget tema.</p></div>
+      </div>
+      <div style="display:flex; gap:16px; padding:22px; background:#fff; border:1px solid #e6e1d4; border-radius:14px;">
+        <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#b5623a; margin-top:8px;"></span>
+        <div><h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Bare ett utbyggingsalternativ</h3><p style="font-size:14.5px; color:#5b5d51; margin:0;">KU-forskriften krever vurdering av realistiske alternativer. Et forslag om redusert utbygging finnes og ligger ved saken — men er ikke konsekvensutredet. Politikerne mangler et reelt mellomalternativ.</p></div>
+      </div>
+      <div style="display:flex; gap:16px; padding:22px; background:#fff; border:1px solid #e6e1d4; border-radius:14px;">
+        <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#b5623a; margin-top:8px;"></span>
+        <div><h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Kunnskapsgrunnlaget har hull</h3><p style="font-size:14.5px; color:#5b5d51; margin:0;">Barnehagedata fra 2013, ingen svar fra Gjemble barnehage, kun to befaringer i mai/juni (ingen vinterbruk) og Strava-data som underrepresenterer barn og eldre. Likevel vurderes usikkerheten som «lav».</p></div>
+      </div>
+      <div style="display:flex; gap:16px; padding:22px; background:#fff; border:1px solid #e6e1d4; border-radius:14px;">
+        <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#b5623a; margin-top:8px;"></span>
+        <div><h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Konsekvensgraden er satt for lavt</h3><p style="font-size:14.5px; color:#5b5d51; margin:0;">Kommunens egen kartlegging registrerer området som svært viktig, men verdien settes til «stor», ikke «svært stor». Riktig sammenstilling gir stor negativ konsekvens — ikke middels, som rapporten konkluderer med.</p></div>
+      </div>
+      <div style="display:flex; gap:16px; padding:22px; background:#fff; border:1px solid #e6e1d4; border-radius:14px;">
+        <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#b5623a; margin-top:8px;"></span>
+        <div><h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Avbøtende tiltak er ikke sikret</h3><p style="font-size:14.5px; color:#5b5d51; margin:0;">Det viktigste anbefalte tiltaket — vegetasjonsbeltet mellom skog og nye boliger — foreslås ikke tatt inn i planbestemmelsene. Uten bestemmelse er det ikke bindende, og premissene for konklusjonen svikter.</p></div>
+      </div>
+      <div style="display:flex; gap:16px; padding:22px; background:#fff; border:1px solid #e6e1d4; border-radius:14px;">
+        <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#b5623a; margin-top:8px;"></span>
+        <div><h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Rapportens eget svar: ikke bygg</h3><p style="font-size:14.5px; color:#5b5d51; margin:0;">Utredningen rangerer selv nullalternativet — ingen utbygging — som det beste. Tiltakshierarkiet (unngå → begrense → istandsette → kompensere) tilsier at eneste reelle avbøting er å la skogen stå.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGNESTYKKET -->
+  <section style="background:#f1eee5; border-top:1px solid #e2ddd0; margin-top:90px;">
+    <div style="max-width:1200px; margin:0 auto; padding:90px 32px;">
+      <div style="max-width:40em; margin-bottom:52px;">
+        <div style="font-size:13px; font-weight:600; color:#3f6b4a; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Regnestykket</div>
+        <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(32px,4vw,50px); line-height:1.08; letter-spacing:-0.01em; margin:0 0 18px; color:#1c2b20;">Hvor mye skog forsvinner egentlig?</h2>
+        <p style="font-size:17.5px; color:#43463c; margin:0;">Utredningen sier «33 % av influensområdet». Men influensområdet inkluderer privat beitemark, bergskrenter, grøfter og areal helt inntil husvegger. Måler man den <strong>fungerende nærskogen</strong> — det folk faktisk bruker til lek, tur og stier — er tapet godt over halvparten.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:22px;">
+        <div style="background:#fff; border:1px solid #e6e1d4; border-radius:16px; padding:30px;">
+          <div style="font-size:13px; color:#6b6d61; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">I dag</div>
+          <div style="font-family:'Newsreader',serif; font-size:30px; color:#1f3a2b; line-height:1.1; margin-bottom:4px;">≈ 80 000 m²</div>
+          <div style="font-size:14px; color:#5f6155; margin-bottom:18px;">fungerende nærskog — omtrent 11 fotballbaner</div>
+          <div style="display:flex; flex-wrap:wrap; gap:7px;">
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+          </div>
+        </div>
+        <div style="background:#fff; border:1px solid #e6e1d4; border-radius:16px; padding:30px;">
+          <div style="font-size:13px; color:#6b6d61; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:6px;">Etter Kjønstadmarka 4</div>
+          <div style="font-family:'Newsreader',serif; font-size:30px; color:#b5623a; line-height:1.1; margin-bottom:4px;">≈ 33 000 m²</div>
+          <div style="font-size:14px; color:#5f6155; margin-bottom:18px;">fungerende nærskog igjen — omtrent 5 fotballbaner</div>
+          <div style="display:flex; flex-wrap:wrap; gap:7px;">
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; background:#3f6b4a; display:flex; align-items:center; justify-content:center;"><div style="width:1.5px; height:100%; background:rgba(255,255,255,0.55);"></div></div>
+            <div style="width:40px; height:26px; border-radius:3px; border:1.5px dashed #c9c2b1; background:transparent;"></div>
+            <div style="width:40px; height:26px; border-radius:3px; border:1.5px dashed #c9c2b1; background:transparent;"></div>
+            <div style="width:40px; height:26px; border-radius:3px; border:1.5px dashed #c9c2b1; background:transparent;"></div>
+            <div style="width:40px; height:26px; border-radius:3px; border:1.5px dashed #c9c2b1; background:transparent;"></div>
+            <div style="width:40px; height:26px; border-radius:3px; border:1.5px dashed #c9c2b1; background:transparent;"></div>
+            <div style="width:40px; height:26px; border-radius:3px; border:1.5px dashed #c9c2b1; background:transparent;"></div>
+          </div>
+          <div style="font-size:13px; color:#8a8571; margin-top:16px;">Og regnes ikke den smale restkorridoren med, er det bare ≈ 3,5 fotballbaner igjen.</div>
+        </div>
+      </div>
+
+      <div style="background:#1f3a2b; color:#e9ecdf; border-radius:16px; padding:34px; display:grid; grid-template-columns:auto 1fr; gap:32px; align-items:center;">
+        <div style="font-family:'Newsreader',serif; font-size:clamp(48px,7vw,84px); line-height:1; color:#e2b48f;">60–68 %</div>
+        <div style="font-size:16.5px; color:#c3c9b7; max-width:36em;">av den fungerende nærskogen kan gå tapt — mens ca. 600 boliger og 1 200–2 000 mennesker i nabolaget skal dele det som står igjen. For dem som bruker skogen, er dette ikke «en tredjedel som berøres».</div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:22px;">
+        <figure style="margin:0; background:#fff; border:1px solid #e6e1d4; border-radius:16px; overflow:hidden; display:flex; flex-direction:column;">
+          <img src="images/kart-plankart.png" alt="Plankart for Kjønstadmarka 4: gule felt er boliger, grå er veier — lagt midt i dagens skog" style="width:100%; height:auto; display:block;">
+          <figcaption style="padding:16px 20px; font-size:13.5px; color:#5b5d51; line-height:1.5;"><strong style="color:#1c2b20;">Dette bygges ned.</strong> Plankartet viser selve planområdet: gule felt er boliger, grått er veier — lagt tvers gjennom dagens skog. <span style="color:#8a8571;">Plankart: KU friluftsliv, Sweco 29.06.2026 (figur 1-2).</span></figcaption>
+        </figure>
+        <figure style="margin:0; background:#fff; border:1px solid #e6e1d4; border-radius:16px; overflow:hidden; display:flex; flex-direction:column;">
+          <img src="images/kart-stier-v2.png" alt="Illustrasjon av utbygd Kjønstadmarka 4 sett fra lufta, med stier som fjernes markert i gult" style="width:100%; height:auto; display:block;">
+          <figcaption style="padding:16px 20px; font-size:13.5px; color:#5b5d51; line-height:1.5;"><strong style="color:#1c2b20;">Slik blir det seende ut.</strong> Utbyggingen sett fra lufta — de gule stiene fjernes. Mindre stier er ikke engang markert på kartet. <span style="color:#8a8571;">Illustrasjon: KU friluftsliv, Sweco 29.06.2026 (figur 4-8).</span></figcaption>
+        </figure>
+        <figure style="grid-column:1/-1; margin:0; background:#fff; border:1px solid #e6e1d4; border-radius:16px; overflow:hidden; display:flex; flex-direction:column;">
+          <img src="images/kart-stinett.png" alt="Kart over dagens stinett i Kjønstadmarka, med hovedstier og alle mindre stier" style="width:100%; height:auto; display:block;">
+          <figcaption style="padding:16px 20px; font-size:13.5px; color:#5b5d51; line-height:1.5;"><strong style="color:#1c2b20;">Dagens stinett — det som faktisk brukes.</strong> Kartet viser hele nettverket av stier i marka, også de mange småstiene barn og turgåere bruker daglig. Sammenlign med illustrasjonen over: småstiene er ikke tegnet inn der, og mange av dem ligger i området som bygges ned. <span style="color:#8a8571;">Kart: KU friluftsliv, Sweco 29.06.2026 (figur 3-1).</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- VÅRT KRAV -->
+  <section style="max-width:1200px; margin:0 auto; padding:90px 32px 0;">
+    <div style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;">
+      <div>
+        <div style="font-size:13px; font-weight:600; color:#3f6b4a; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Vårt krav</div>
+        <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(32px,4vw,50px); line-height:1.08; letter-spacing:-0.01em; margin:0 0 18px; color:#1c2b20;">Dette ber vi kommunen om</h2>
+        <p style="font-size:17px; color:#43463c; margin:0;">Vårt mål er å verne hele Kjønstadmarka 4. Fram til det er sikret, ber vi Levanger kommune om et forsvarlig beslutningsgrunnlag før planen behandles på nytt.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:2px;">
+        <div style="display:flex; gap:18px; padding:20px 0; border-bottom:1px solid #e6e1d4;">
+          <span style="font-family:'Newsreader',serif; font-size:20px; color:#3f6b4a; flex:0 0 auto; width:28px;">1</span>
+          <div style="font-size:15.5px; color:#33362d;">Utsett høringsfristen, slik at fagmiljøer, barnehage, skole og innbyggere rekker å svare skikkelig.</div>
+        </div>
+        <div style="display:flex; gap:18px; padding:20px 0; border-bottom:1px solid #e6e1d4;">
+          <span style="font-family:'Newsreader',serif; font-size:20px; color:#3f6b4a; flex:0 0 auto; width:28px;">2</span>
+          <div style="font-size:15.5px; color:#33362d;">Utred virkningene for friluftsinteressene i hele planområdet, inkludert den nordlige delen — og vurder i hvilken grad tilgrensende temaer, som f.eks. natur, barn og unge og folkehelse, skal tas med, slik Statsforvalteren krever.</div>
+        </div>
+        <div style="display:flex; gap:18px; padding:20px 0; border-bottom:1px solid #e6e1d4;">
+          <span style="font-family:'Newsreader',serif; font-size:20px; color:#3f6b4a; flex:0 0 auto; width:28px;">3</span>
+          <div style="font-size:15.5px; color:#33362d;">Konsekvensutred et reelt mellomalternativ med redusert utbygging — ikke bare full utbygging mot nullalternativet.</div>
+        </div>
+        <div style="display:flex; gap:18px; padding:20px 0; border-bottom:1px solid #e6e1d4;">
+          <span style="font-family:'Newsreader',serif; font-size:20px; color:#3f6b4a; flex:0 0 auto; width:28px;">4</span>
+          <div style="font-size:15.5px; color:#33362d;">Regn arealtapet mot dagens reelle friluftsområde — ikke mot et «influensområde» med privat eiendom og beitemark.</div>
+        </div>
+        <div style="display:flex; gap:18px; padding:20px 0;">
+          <span style="font-family:'Newsreader',serif; font-size:20px; color:#3f6b4a; flex:0 0 auto; width:28px;">5</span>
+          <div style="font-size:15.5px; color:#33362d;">Ta avbøtende tiltak — som vegetasjonsbeltet — inn i planbestemmelsene, slik at de faktisk blir bindende.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÅPNE SPØRSMÅL -->
+  <section style="background:#f1eee5; border-top:1px solid #e2ddd0; margin-top:90px;">
+    <div style="max-width:1200px; margin:0 auto; padding:90px 32px;">
+      <div style="max-width:40em; margin-bottom:44px;">
+        <div style="font-size:13px; font-weight:600; color:#3f6b4a; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Brev til kommunen 6. juli · svar fra kommunedirektøren 8. juli 2026</div>
+        <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(32px,4vw,50px); line-height:1.08; letter-spacing:-0.01em; margin:0 0 18px; color:#1c2b20;">Vi spurte — dette svarte kommunen</h2>
+        <p style="font-size:17.5px; color:#43463c; margin:0;">I brev til ordfører og kommune ba vi om utsatt høringsfrist og stilte grunnleggende spørsmål ved premissene for utredningen. Kommunedirektøren svarte 8. juli. Svarene bekrefter flere av våre bekymringer.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:22px; align-items:start;">
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          <div style="background:#fff; border:1px solid #e6e1d4; border-radius:14px; padding:24px 26px;">
+            <h3 style="font-size:17px; margin:0 0 8px; color:#1c2b20;">Er dette en fullstendig KU — eller bare en «del-KU»?</h3>
+            <p style="font-size:14.5px; color:#5b5d51; margin:0 0 12px;">Statsforvalteren krevde utredning av friluftsinteressene i hele planområdet — og vurdering av natur, barn og unge og folkehelse.</p>
+            <div style="border-left:3px solid #3f6b4a; padding:8px 0 8px 14px; margin:0 0 10px;"><div style="font-size:12px; font-weight:700; color:#3f6b4a; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">Kommunens svar</div><p style="font-size:14.5px; color:#33362d; margin:0;">KU friluftsliv er <em>den</em> konsekvensutredningen som utarbeides før ny sluttbehandling. Det planlegges ingen flere høringer før saken avgjøres.</p></div>
+            <p style="font-size:14px; color:#b5623a; font-weight:600; margin:0;">Altså: én friluftslivsrapport skal alene svare på hele Statsforvalterens krav — uten egne utredninger for natur, barn og unge eller folkehelse.</p>
+          </div>
+          <div style="background:#fff; border:1px solid #e6e1d4; border-radius:14px; padding:24px 26px;">
+            <h3 style="font-size:17px; margin:0 0 8px; color:#1c2b20;">Hvem har lagt premissene?</h3>
+            <p style="font-size:14.5px; color:#5b5d51; margin:0 0 12px;">Er valg av utreder, avgrensning og høringsfrist bestemt av administrasjonen alene — uten politisk behandling?</p>
+            <div style="border-left:3px solid #3f6b4a; padding:8px 0 8px 14px; margin:0 0 10px;"><div style="font-size:12px; font-weight:700; color:#3f6b4a; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">Kommunens svar</div><p style="font-size:14.5px; color:#33362d; margin:0;">Vedtaket er håndtert av kommunen som tiltakshaver. Det er «formelt sett ikke nødvendig med en politisk involvering». Formannskapet fikk en muntlig orientering 20. mai — det finnes ikke saksframlegg eller annen dokumentasjon av den.</p></div>
+            <p style="font-size:14px; color:#b5623a; font-weight:600; margin:0;">Altså: premissene er lagt administrativt, og den eneste politiske involveringen er udokumentert.</p>
+          </div>
+          <div style="background:#fff; border:1px solid #e6e1d4; border-radius:14px; padding:24px 26px;">
+            <h3 style="font-size:17px; margin:0 0 8px; color:#1c2b20;">Er Sweco habil til oppdraget?</h3>
+            <p style="font-size:14.5px; color:#5b5d51; margin:0 0 12px;">Vi ba om at utrederens nøytralitet og uavhengighet vurderes — samme firma har tidligere konkludert med at tiltaket ikke får vesentlige konsekvenser.</p>
+            <div style="border-left:3px solid #3f6b4a; padding:8px 0 8px 14px; margin:0 0 10px;"><div style="font-size:12px; font-weight:700; color:#3f6b4a; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px;">Kommunens svar</div><p style="font-size:14.5px; color:#33362d; margin:0;">Sweco har hatt hele reguleringsoppdraget for Kjønstadmarka 4, og det er «derfor naturlig» at de også får konsekvensutredningen. «Kvalitet og innhold står for SWECO sin regning.» Finner vi feil eller mangler, bes vi omtale det i høringsuttalelsen.</p></div>
+            <p style="font-size:14px; color:#b5623a; font-weight:600; margin:0;">Altså: ingen habilitetsvurdering er gjort — utbyggers eget konsulentfirma gransker sitt eget prosjekt, og ansvaret skyves over på Sweco.</p>
+          </div>
+        </div>
+
+        <div style="background:#1f3a2b; color:#e9ecdf; border-radius:16px; padding:30px;">
+          <div style="font-size:13px; color:#9db892; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:12px;">Kravet om utsatt frist</div>
+          <p style="font-size:15.5px; color:#c3c9b7; margin:0 0 20px;">Vi ba om at høringsfristen forlenges fra seks uker til tre måneder, med frist <strong style="color:#fff;">2. oktober 2026</strong> — en så omfattende sak bør ikke høres i fellesferien. Kommunen avslo: fristen ble kun flyttet til 15. september, etter innspill fra Rødt og SV, og «det er ikke hensiktsmessig» å forlenge ytterligere.</p>
+          <div style="border-top:1px solid #37483080; padding-top:18px; display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; justify-content:space-between; gap:12px; font-size:14px;"><span style="color:#9db892;">Kommunens frist</span><span style="color:#f4f2e8; font-weight:600;">15. september 2026</span></div>
+            <div style="display:flex; justify-content:space-between; gap:12px; font-size:14px;"><span style="color:#9db892;">Vårt krav</span><span style="color:#e2b48f; font-weight:600;">2. oktober 2026</span></div>
+            <div style="display:flex; justify-content:space-between; gap:12px; font-size:14px;"><span style="color:#9db892;">Kommunens svar</span><span style="color:#e2b48f; font-weight:600;">Avslått</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INNSYN -->
+  <section style="max-width:1200px; margin:0 auto; padding:90px 32px 0;">
+    <div style="max-width:40em; margin-bottom:44px;">
+      <div style="font-size:13px; font-weight:600; color:#3f6b4a; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Innsyn · møtereferater kommune–Sweco</div>
+      <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(32px,4vw,50px); line-height:1.08; letter-spacing:-0.01em; margin:0 0 18px; color:#1c2b20;">Dette viser innsynsdokumentene</h2>
+      <p style="font-size:17.5px; color:#43463c; margin:0;">Etter krav om innsyn har vi fått referatene fra møtene mellom Levanger kommune og Sweco om bestilling og gjennomføring av konsekvensutredningen. De gir grunn til bekymring.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:18px;">
+      <div style="display:flex; gap:16px; padding:22px; background:#fff; border:1px solid #e6e1d4; border-radius:14px;">
+        <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#b5623a; margin-top:8px;"></span>
+        <div><h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Innbyggernes uttalelser nedvurderes</h3><p style="font-size:14.5px; color:#5b5d51; margin:0;">Sweco skal «vurdere påliteligheten» i uttalelser som allerede foreligger, fordi de «gjerne er litt farget av engasjementet». Naboenes og skolens stemme stemples som partsinnlegg før utredningen starter. <span style="color:#8a8571;">(referat 12.05.2026)</span></p></div>
+      </div>
+      <div style="display:flex; gap:16px; padding:22px; background:#fff; border:1px solid #e6e1d4; border-radius:14px;">
+        <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#b5623a; margin-top:8px;"></span>
+        <div><h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Barn, unge og folkehelse: avgjort på forhånd</h3><p style="font-size:14.5px; color:#5b5d51; margin:0;">Allerede i bestillingsmøtet ble det vurdert at det «uansett ikke vil være aktuelt» med egne fagrapporter på temaene Statsforvalteren nevnte spesifikt i sitt vedtak. <span style="color:#8a8571;">(referat 12.05.2026)</span></p></div>
+      </div>
+      <div style="display:flex; gap:16px; padding:22px; background:#fff; border:1px solid #e6e1d4; border-radius:14px;">
+        <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#b5623a; margin-top:8px;"></span>
+        <div><h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Tidsplanen var lagt før utredningen</h3><p style="font-size:14.5px; color:#5b5d51; margin:0;">Fremdriften ble rigget mot planutvalget 2. september og kommunestyret 23. september — med den konsekvens at høringen måtte legges i fellesferien. Målet var vedtak, ikke medvirkning. <span style="color:#8a8571;">(referat 12.05.2026)</span></p></div>
+      </div>
+      <div style="display:flex; gap:16px; padding:22px; background:#fff; border:1px solid #e6e1d4; border-radius:14px;">
+        <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#b5623a; margin-top:8px;"></span>
+        <div><h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Swecos egne funn: boliger bør vurderes tatt ut</h3><p style="font-size:14.5px; color:#5b5d51; margin:0;">Etter første befaring skrev Sweco at foreløpige vurderinger «tyder på at man må ta en vurdering på om noen boliger må tas ut av planen». Selv utrederen ser at planen går for langt. <span style="color:#8a8571;">(referat 03.06.2026)</span></p></div>
+      </div>
+      <div style="display:flex; gap:16px; padding:22px; background:#fff; border:1px solid #e6e1d4; border-radius:14px;">
+        <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#b5623a; margin-top:8px;"></span>
+        <div><h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Kommunen er både utbygger og planmyndighet</h3><p style="font-size:14.5px; color:#5b5d51; margin:0;">Kommunedirektøren bekrefter at kommunen har to roller i saken — tiltakshaver og planmyndighet — og avviser samtidig at saksbehandlingen bør settes bort til noen uten historikk i saken. <span style="color:#8a8571;">(svarbrev 07.07.2026)</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIDRA -->
+  <section id="bidra" style="max-width:1200px; margin:0 auto; padding:90px 32px 20px;">
+    <div style="max-width:38em; margin-bottom:44px;">
+      <div style="font-size:13px; font-weight:600; color:#3f6b4a; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Slik kan du bidra</div>
+      <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(32px,4vw,50px); line-height:1.08; letter-spacing:-0.01em; margin:0; color:#1c2b20;">Sammen er vi mange nok til å bli hørt</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:22px;">
+      <div style="background:#e7efe3; border-radius:16px; padding:30px;">
+        <div style="font-family:'Newsreader',serif; font-size:22px; color:#1f3a2b; margin-bottom:10px;">Bli medlem</div>
+        <p style="font-size:14.5px; color:#41473c; margin:0 0 18px;">Jo flere vi er, desto mer tyngde har vi overfor kommunen og media. 100 kr i året for voksne, gratis for barn.</p>
+        <a href="https://spond.com/invite/CXRLH" target="_blank" rel="noopener" style="display:inline-block; background:#1f3a2b; color:#f6f4ee; text-decoration:none; padding:11px 20px; border-radius:999px; font-weight:600; font-size:14.5px;">Meld deg inn →</a>
+      </div>
+      <div style="background:#fff; border:1px solid #e6e1d4; border-radius:16px; padding:30px;">
+        <div style="font-family:'Newsreader',serif; font-size:22px; color:#1f3a2b; margin-bottom:10px;">Send høringssvar</div>
+        <p style="font-size:14.5px; color:#41473c; margin:0 0 14px;">Alle kan sende inn merknad til kommunen mens høringen pågår. Send til <a href="mailto:postmottak@levanger.kommune.no" style="color:#1f3a2b; font-weight:600;">postmottak@levanger.kommune.no</a> eller pr. post til Levanger kommune, Postboks 130, 7601 Levanger.</p>
+        <div style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:#b5623a; background:#f6ece5; padding:6px 12px; border-radius:999px; margin-bottom:18px;">Frist: 15. september 2026</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="mailto:postmottak@levanger.kommune.no" style="display:inline-block; background:#1f3a2b; color:#f6f4ee; text-decoration:none; padding:11px 20px; border-radius:999px; font-weight:600; font-size:14.5px;">Send merknad →</a>
+          <a href="#kontakt" style="display:inline-block; color:#1f3a2b; text-decoration:none; padding:11px 20px; border-radius:999px; font-weight:600; font-size:14.5px; border:1.5px solid #cfc9ba;">Få hjelp</a>
+        </div>
+      </div>
+      <div style="background:#fff; border:1px solid #e6e1d4; border-radius:16px; padding:30px;">
+        <div style="font-family:'Newsreader',serif; font-size:22px; color:#1f3a2b; margin-bottom:10px;">Møt opp</div>
+        <p style="font-size:14.5px; color:#41473c; margin:0 0 18px;">Vi planlegger folkemøte på Nesheim samfunnshus og inviterer politikere som støtter vern. Følg med og bli med.</p>
+        <a href="#kontakt" style="display:inline-block; color:#1f3a2b; text-decoration:none; padding:11px 20px; border-radius:999px; font-weight:600; font-size:14.5px; border:1.5px solid #cfc9ba;">Hold meg oppdatert →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDLEM -->
+  <section id="medlem" style="max-width:1200px; margin:0 auto; padding:70px 32px;">
+    <div style="background:#1f3a2b; border-radius:22px; padding:clamp(32px,5vw,64px); color:#e9ecdf; display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;">
+      <div>
+        <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(30px,3.6vw,46px); line-height:1.08; margin:0 0 16px; color:#f4f2e8;">Bli medlem i dag</h2>
+        <p style="font-size:17px; color:#c3c9b7; margin:0 0 20px; max-width:30em;">Medlemskap koster <strong style="color:#fff;">100 kr per år</strong> for voksne. Barn under 18 år er gratis medlemmer. Kontingenten går uavkortet til arbeidet med å verne marka.</p>
+        <p style="font-size:15px; color:#9db892; margin:0 0 26px; max-width:32em;">Vi bruker appen <strong style="color:#e2e6d8;">Spond</strong> for å organisere aktiviteter og dele informasjon. Åpne lenken for å melde deg inn.</p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
+          <a href="https://spond.com/invite/CXRLH" target="_blank" rel="noopener" style="background:#f6f4ee; color:#1f3a2b; text-decoration:none; padding:15px 28px; border-radius:999px; font-weight:700; font-size:16px;">Meld deg inn via Spond</a>
+          <span style="font-size:14px; color:#9db892;">Gratis app · tar under ett minutt</span>
+        </div>
+      </div>
+      <div style="background:#24422e; border:1px solid #37483080; border-radius:16px; padding:28px;">
+        <div style="font-size:13px; color:#9db892; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px;">Hva medlemskapet gir</div>
+        <ul style="list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px;">
+          <li style="display:flex; gap:12px; font-size:15px; color:#e2e6d8;"><span style="color:#9db892;">✓</span> Tyngde i dialog med kommune og media</li>
+          <li style="display:flex; gap:12px; font-size:15px; color:#e2e6d8;"><span style="color:#9db892;">✓</span> Oppdateringer om saken og høringen</li>
+          <li style="display:flex; gap:12px; font-size:15px; color:#e2e6d8;"><span style="color:#9db892;">✓</span> Invitasjon til folkemøter og dugnad</li>
+          <li style="display:flex; gap:12px; font-size:15px; color:#e2e6d8;"><span style="color:#9db892;">✓</span> Stemmerett på årsmøtet (fra 18 år)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT / STYRET -->
+  <section id="kontakt" style="max-width:1200px; margin:0 auto; padding:20px 32px 80px;">
+    <div style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;">
+      <div>
+        <div style="font-size:13px; font-weight:600; color:#3f6b4a; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:14px;">Kontakt</div>
+        <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(30px,3.6vw,46px); line-height:1.08; margin:0 0 18px; color:#1c2b20;">Ta kontakt med styret</h2>
+        <p style="font-size:16.5px; color:#43463c; margin:0 0 26px;">Vil du melde deg inn, hjelpe til eller vite mer om saken? Send oss en e-post, så tar vi det derfra.</p>
+        <sc-if value="{{ showContactDetails }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <a href="mailto:vern.kjonstadmarka@proton.me" style="color:#1f3a2b; font-weight:600; font-size:18px; text-decoration:none;">vern.kjonstadmarka@proton.me</a>
+            <span style="font-size:14.5px; color:#6b6d61;">Vern Kjønstadmarka · styret</span>
+          </div>
+        </sc-if>
+      </div>
+      <div style="background:#fff; border:1px solid #e6e1d4; border-radius:16px; padding:30px;">
+        <div style="font-size:13px; color:#6b6d61; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:18px;">Styret</div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px 24px;">
+          <div><div style="font-weight:600; color:#1c2b20; font-size:15px;">Ingrid Edna Hildrum</div><div style="font-size:13.5px; color:#7a7c6f;">Leder</div></div>
+          <div><div style="font-weight:600; color:#1c2b20; font-size:15px;">Eivor Alette Laugsand</div><div style="font-size:13.5px; color:#7a7c6f;">Nestleder</div></div>
+          <div><div style="font-weight:600; color:#1c2b20; font-size:15px;">Jørgen Rørvik</div><div style="font-size:13.5px; color:#7a7c6f;">Sekretær</div></div>
+          <div><div style="font-weight:600; color:#1c2b20; font-size:15px;">Roger Aspås</div><div style="font-size:13.5px; color:#7a7c6f;">Kasserer</div></div>
+          <div><div style="font-weight:600; color:#1c2b20; font-size:15px;">Magnar Brandseth</div><div style="font-size:13.5px; color:#7a7c6f;">Styremedlem</div></div>
+          <div><div style="font-weight:600; color:#1c2b20; font-size:15px;">Liv Sofie Kjønstad</div><div style="font-size:13.5px; color:#7a7c6f;">Styremedlem</div></div>
+          <div><div style="font-weight:600; color:#1c2b20; font-size:15px;">Ragnar Skrede</div><div style="font-size:13.5px; color:#7a7c6f;">Styremedlem</div></div>
+          <div><div style="font-weight:600; color:#1c2b20; font-size:15px;">Filip Hildrum</div><div style="font-size:13.5px; color:#7a7c6f;">Barnas representant</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#1c2b20; color:#aab39f;">
+    <div style="max-width:1200px; margin:0 auto; padding:52px 32px; display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; align-items:flex-start;">
+      <div style="max-width:26em;">
+        <div style="display:flex; align-items:center; gap:11px; margin-bottom:14px;">
+          <span style="width:30px; height:30px; border-radius:50%; background:#2f4a38; display:flex; align-items:center; justify-content:center;">
+            <span style="width:10px; height:14px; background:#8fae83; border-radius:0 100% 0 100%; transform:rotate(-8deg);"></span>
+          </span>
+          <span style="font-weight:700; color:#f4f2e8; font-size:16px;">Vern Kjønstadmarka</span>
+        </div>
+        <p style="font-size:14px; margin:0; color:#98a28d;">Frivillig forening som arbeider for å verne hele Kjønstadmarka 4 i Levanger. Stiftet 28. juni 2026.</p>
+      </div>
+      <div style="display:flex; gap:64px; flex-wrap:wrap;">
+        <div style="display:flex; flex-direction:column; gap:9px; font-size:14px;">
+          <span style="color:#7c866f; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">Meny</span>
+          <a href="#saken" style="color:#c0c8b6; text-decoration:none;">Saken</a>
+          <a href="#omradet" style="color:#c0c8b6; text-decoration:none;">Området</a>
+          <a href="#bidra" style="color:#c0c8b6; text-decoration:none;">Bidra</a>
+          <a href="#medlem" style="color:#c0c8b6; text-decoration:none;">Bli medlem</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:9px; font-size:14px;">
+          <span style="color:#7c866f; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">Kontakt</span>
+          <a href="mailto:vern.kjonstadmarka@proton.me" style="color:#c0c8b6; text-decoration:none;">vern.kjonstadmarka@proton.me</a>
+          <span style="color:#c0c8b6;">Levanger, Trøndelag</span>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid #2c3b2f;">
+      <div style="max-width:1200px; margin:0 auto; padding:18px 32px; font-size:12.5px; color:#7c866f; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+        <span>© 2026 Vern Kjønstadmarka</span>
+        <span>Bli med og la skogen få stå.</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;showStatusBanner&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Innhold&quot; },
+  &quot;showContactDetails&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Innhold&quot; }
+}">
+class Component extends DCLogic {
+  componentDidMount() {
+    // Bildene som rullerer i hero. Legg til flere filnavn her etter hvert som barnas
+    // representant laster opp bilder (samme filer kan brukes på Barnas side).
+    const photos = [
+      "images/kjonstadmarka-sti.jpg",
+      "images/barn-paa-sti.png"
+    ];
+    const el = document.getElementById("heroPhoto");
+    if (!el || photos.length < 2) return;
+    let i = 0;
+    this._heroTimer = setInterval(() => {
+      i = (i + 1) % photos.length;
+      el.style.opacity = "0";
+      setTimeout(() => { el.src = photos[i]; el.style.opacity = "1"; }, 800);
+    }, 10000);
+  }
+  componentWillUnmount() { if (this._heroTimer) clearInterval(this._heroTimer); }
+  renderVals() {
+    return {
+      showStatusBanner: this.props.showStatusBanner ?? true,
+      showContactDetails: this.props.showContactDetails ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
