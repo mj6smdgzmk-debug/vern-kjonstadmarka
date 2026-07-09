@@ -42,13 +42,58 @@
     <div style="display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:600; color:#3f6b4a; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:20px;">
       <span style="width:24px; height:1.5px; background:#3f6b4a;"></span> Barnas side
     </div>
-    <h1 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(38px,5vw,66px); line-height:1.04; letter-spacing:-0.02em; margin:0 0 20px; color:#1c2b20; max-width:16em;">Marka sett med barnas øyne</h1>
-    <p style="font-size:18.5px; line-height:1.6; color:#43463c; max-width:34em; margin:0 0 22px;">Små øyeblikk fra skogen der barna leker, bygger og oppdager. Dette er det som står på spill.</p>
-    <a href="https://www.ilevanger.no/store-deler-av-skogen-ved-kjonstadmarka-star-i-fare-for-a-forsvinne-na-setter-barna-ned-foten/f/5-125-190282" target="_blank" rel="noopener" style="display:inline-flex; align-items:baseline; gap:12px; background:#fff; border:1px solid #e6e1d4; border-radius:12px; padding:16px 20px; text-decoration:none; max-width:44em;">
-      <span style="flex:0 0 auto; background:#b5623a; color:#fff; font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; border-radius:4px;">iLevanger</span>
-      <span style="font-size:15.5px; color:#23261f; font-weight:500;">«Store deler av skogen ved Kjønstadmarka står i fare for å forsvinne – nå setter barna ned foten» — les reportasjen →</span>
-    </a>
-    <div style="margin-top:28px; background:#fff; border:1px solid #e6e1d4; border-radius:16px; padding:26px 28px; max-width:44em;">
+    <h1 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(38px,5vw,66px); line-height:1.04; letter-spacing:-0.02em; margin:0 0 20px; color:#1c2b20; max-width:16em;">Skogen sett med barnas øyne</h1>
+    <p style="font-size:18.5px; line-height:1.6; color:#43463c; max-width:34em; margin:0 0 30px;">Små øyeblikk fra skogen der barna leker, bygger og oppdager. Dette er det som står på spill.</p>
+  </section>
+
+  <!-- FUGLEQUIZ -->
+  <section style="max-width:1200px; margin:0 auto; padding:0 32px 48px;">
+    <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(24px,2.8vw,34px); margin:0 0 8px; color:#1c2b20;">Kan du navnet på fuglene barnas representant har tatt bilde av?</h2>
+    <p style="font-size:15.5px; color:#5b5d51; margin:0 0 24px; max-width:44em;">8 bilder fra skogen — hvor mange fuglearter kjenner du igjen?</p>
+
+    <sc-if value="{{ quizIntro }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#fff; border:1px solid #e0dacb; border-radius:18px; padding:40px; max-width:36em; text-align:center;">
+        <p style="font-size:16px; color:#43463c; margin:0 0 22px;">Se på bildet og gjett hvilken fugl det er. Tre svaralternativer per spørsmål — bare ett er riktig!</p>
+        <button onClick="{{ onStart }}" style="background:#1f3a2b; color:#f6f4ee; border:none; padding:13px 26px; border-radius:999px; font-weight:700; font-size:15.5px; cursor:pointer; font-family:inherit;">Start quizen →</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ quizActive }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#fff; border:1px solid #e0dacb; border-radius:18px; padding:28px; max-width:36em;">
+        <div style="font-size:13px; font-weight:600; color:#8a8571; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:16px;">Spørsmål {{ progressLabel }} av 8</div>
+        <div style="border-radius:14px; overflow:hidden; margin-bottom:18px; aspect-ratio:4/3; background:#e7e3d6;">
+          <img src="{{ qImg }}" alt="Fugl i Kjønstadmarka" style="width:100%; height:100%; object-fit:cover; display:block;">
+        </div>
+        <h3 style="font-size:19px; margin:0 0 16px; color:#1c2b20;">{{ qQuestion }}</h3>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <button onClick="{{ onSelect0 }}" style="{{ opt0Style }}">{{ opt0Text }}</button>
+          <button onClick="{{ onSelect1 }}" style="{{ opt1Style }}">{{ opt1Text }}</button>
+          <button onClick="{{ onSelect2 }}" style="{{ opt2Style }}">{{ opt2Text }}</button>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ quizFinished }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#1f3a2b; color:#e9ecdf; border-radius:18px; padding:40px; max-width:36em; text-align:center;">
+        <div style="font-size:14px; color:#9db892; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px;">Du fikk {{ scoreLabel }} av 8 riktige</div>
+        <h3 style="font-family:'Newsreader',serif; font-weight:500; font-size:28px; margin:0 0 12px; color:#fff;">{{ resultTitle }}</h3>
+        <p style="font-size:15.5px; color:#c3c9b7; margin:0 0 24px;">{{ resultText }}</p>
+        <button onClick="{{ onRestart }}" style="background:#f6f4ee; color:#1f3a2b; border:none; padding:12px 24px; border-radius:999px; font-weight:700; font-size:15px; cursor:pointer; font-family:inherit;">Ta quizen igjen</button>
+      </div>
+    </sc-if>
+  </section>
+
+  <!-- LES MER -->
+  <section style="max-width:1200px; margin:0 auto; padding:0 32px 36px;">
+    <div style="background:#fff; border:1px solid #e6e1d4; border-radius:16px; padding:26px 28px; max-width:44em;">
+      <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:24px; margin:0 0 10px; color:#1c2b20;">Barna setter ned foten</h2>
+      <p style="font-size:15.5px; line-height:1.6; color:#43463c; margin:0 0 14px;">Store deler av skogen i Kjønstadmarka står i fare for å forsvinne. Det bekymrer barna som bruker skogen hver dag — og de har klare meninger om hva som bør skje med den. iLevanger har snakket med noen av dem om hvorfor skogen betyr så mye.</p>
+      <a href="https://www.ilevanger.no/store-deler-av-skogen-ved-kjonstadmarka-star-i-fare-for-a-forsvinne-na-setter-barna-ned-foten/f/5-125-190282" target="_blank" rel="noopener" style="display:inline-flex; align-items:baseline; gap:10px; text-decoration:none;">
+        <span style="flex:0 0 auto; background:#b5623a; color:#fff; font-weight:700; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; padding:4px 10px; border-radius:4px;">iLevanger</span>
+        <span style="font-size:15px; color:#1f3a2b; font-weight:600;">«Store deler av skogen ved Kjønstadmarka står i fare for å forsvinne – nå setter barna ned foten» — les reportasjen →</span>
+      </a>
+    </div>
+    <div style="margin-top:20px; background:#fff; border:1px solid #e6e1d4; border-radius:16px; padding:26px 28px; max-width:44em;">
       <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:24px; margin:0 0 10px; color:#1c2b20;">Visste du? Skogen er full av arter!</h2>
       <p style="font-size:15.5px; line-height:1.6; color:#43463c; margin:0 0 14px;">I juni 2025 var det artsjakt i Kjønstadmarka — en skattejakt der store og små lette etter planter, fugler, insekter og sopp, og skrev ned alt de fant. Jegerne gjorde spennende nye funn, og alt ble registrert slik at også de som bestemmer kan se hvor mye liv som bor i skogen vår. Kanskje finner du noen av artene neste gang du er på tur?</p>
       <a href="https://www.ilevanger.no/vellykket-jakt-pa-arter-i-skogen-spennende-nye-funn/s/5-125-248193" target="_blank" rel="noopener" style="display:inline-flex; align-items:baseline; gap:10px; text-decoration:none;">
@@ -86,23 +131,8 @@
     </div>
   </section>
 
-  <!-- ROTERENDE HOVEDBILDE -->
-  <section style="max-width:1200px; margin:44px auto 0; padding:0 32px;">
-    <div style="position:relative; width:100%; aspect-ratio:16/9; border-radius:20px; overflow:hidden; border:1px solid #d8d2c2; background:#e7e3d6;">
-      <div class="barn-feat" style="position:absolute; inset:0; opacity:1; transition:opacity 1s ease;">
-        <img src="images/kjonstadmarka-sti.jpg" alt="Sti i Kjønstadmarka" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div class="barn-feat" style="position:absolute; inset:0; opacity:0; transition:opacity 1s ease;">
-        <img src="images/barn-paa-sti.png" alt="Barn på sti i Kjønstadmarka" style="width:100%; height:100%; object-fit:cover; display:block;">
-      </div>
-      <div style="position:absolute; left:0; bottom:0; padding:16px 20px; background:linear-gradient(to top,rgba(28,43,32,0.55),transparent); width:100%; pointer-events:none;">
-        <span style="color:#f4f2e8; font-size:13.5px; font-weight:500;">Bildene rullerer automatisk</span>
-      </div>
-    </div>
-  </section>
-
   <!-- GALLERI -->
-  <section style="max-width:1200px; margin:0 auto; padding:44px 32px 20px;">
+  <section style="max-width:1200px; margin:0 auto; padding:0 32px 20px;">
     <h2 style="font-family:'Newsreader',serif; font-weight:500; font-size:clamp(24px,2.8vw,34px); margin:0 0 22px; color:#1c2b20;">Flere øyeblikk fra Kjønstadmarka</h2>
     <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
       <div style="aspect-ratio:1/1; border-radius:14px; overflow:hidden; border:1px solid #e0dacb;"><img src="images/barn-paa-sti.png" alt="Barn på sti i Kjønstadmarka" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
@@ -122,19 +152,123 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-class Component extends DCLogic {
-  componentDidMount() {
-    const feats = Array.from(document.querySelectorAll(".barn-feat"));
-    if (feats.length < 2) return;
-    let i = 0;
-    this._timer = setInterval(() => {
-      feats[i].style.opacity = "0";
-      i = (i + 1) % feats.length;
-      feats[i].style.opacity = "1";
-    }, 10000);
+const QUIZ_QUESTIONS = [
+  { img: "images/quiz-rodstrupe-a.jpg", question: "Hvilken fugl er dette?", options: ["Rødstrupe", "Gråspurv", "Blåstrupe"], correct: 0 },
+  { img: "images/quiz-flaggspett.jpg", question: "Hvilken fugl er dette?", options: ["Flaggspett", "Trekryper", "Gråspett"], correct: 0 },
+  { img: "images/quiz-gronnfink.jpg", question: "Hvilken fugl er dette?", options: ["Grønnfink", "Grønnsisik", "Gulspurv"], correct: 0 },
+  { img: "images/quiz-blameis.jpg", question: "Hvilken fugl er dette?", options: ["Blåmeis", "Kjøttmeis", "Toppmeis"], correct: 0 },
+  { img: "images/quiz-kjottmeis.jpg", question: "Hvilken fugl er dette?", options: ["Kjøttmeis", "Blåmeis", "Granmeis"], correct: 0 },
+  { img: "images/quiz-dompap.jpg", question: "Hvilken fugl er dette?", options: ["Dompap", "Rødstrupe", "Konglebit"], correct: 0 },
+  { img: "images/quiz-trekryper.jpg", question: "Hvilken fugl er dette?", options: ["Trekryper", "Gjerdesmett", "Løvsanger"], correct: 0 },
+  { img: "images/quiz-rodstrupe-b.jpg", question: "Hvilken fugl er dette?", options: ["Rødstrupe", "Rødvingetrost", "Rødstjert"], correct: 0 },
+];
+
+const RESULTS = [
+  { min: 0, max: 0, title: "Kom deg ut i skogen!", text: "Ingen krise — nå har du en god grunn til å ta en tur i Kjønstadmarka og bli kjent med fuglene på ordentlig." },
+  { min: 1, max: 2, title: "Godt i gang!", text: "Du har fått blikk for noen av fuglene i marka. En tur til med kikkert, og du kan flere enn du tror." },
+  { min: 3, max: 4, title: "Du er på god vei!", text: "Du kjenner igjen flere av fuglene som bor i Kjønstadmarka. Bra jobbet!" },
+  { min: 5, max: 6, title: "Ikke verst i det hele tatt!", text: "Du har virkelig god sans for fuglelivet i skogen vår." },
+  { min: 7, max: 7, title: "Så nære perfekt!", text: "Bare én glapp — du kjenner skogens fugler nesten utenpå." },
+  { min: 8, max: 8, title: "Du er jammen litt av en fugleekspert!", text: "Alle åtte riktige — du kjenner fuglelivet i Kjønstadmarka bedre enn de fleste!" },
+];
+
+function shuffledOptions(options, correctIdx) {
+  const arr = options.map((text, i) => ({ text, isCorrect: i === correctIdx }));
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-  componentWillUnmount() { if (this._timer) clearInterval(this._timer); }
-  renderVals() { return {}; }
+  return arr;
+}
+
+class Component extends DCLogic {
+  state = {
+    phase: "active",
+    order: (() => {
+      const o = QUIZ_QUESTIONS.map((_, i) => i);
+      for (let i = o.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [o[i], o[j]] = [o[j], o[i]];
+      }
+      return o;
+    })(),
+    current: 0,
+    score: 0,
+    optionOrder: null,
+    selected: null,
+  };
+
+  componentDidMount() {
+    if (!this.state.optionOrder) {
+      const q = QUIZ_QUESTIONS[this.state.order[0]];
+      this.setState({ optionOrder: shuffledOptions(q.options, q.correct) });
+    }
+  }
+
+  _startQuiz() {
+    const order = QUIZ_QUESTIONS.map((_, i) => i);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    const q = QUIZ_QUESTIONS[order[0]];
+    this.setState({ phase: "active", order, current: 0, score: 0, selected: null, optionOrder: shuffledOptions(q.options, q.correct) });
+  }
+
+  _select(i) {
+    if (this.state.selected !== null) return;
+    const opt = this.state.optionOrder[i];
+    this.setState(s => ({ selected: i, score: opt.isCorrect ? s.score + 1 : s.score }));
+    setTimeout(() => {
+      this.setState(s => {
+        const nextIdx = s.current + 1;
+        if (nextIdx >= s.order.length) return { phase: "finished", selected: null };
+        const q = QUIZ_QUESTIONS[s.order[nextIdx]];
+        return { current: nextIdx, selected: null, optionOrder: shuffledOptions(q.options, q.correct) };
+      });
+    }, 1100);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const isActive = s.phase === "active";
+    const q = isActive ? QUIZ_QUESTIONS[s.order[s.current]] : null;
+    const opts = isActive ? s.optionOrder : [];
+    const optStyle = (i) => {
+      const base = "text-align:left; padding:14px 18px; border-radius:12px; border:1.5px solid #e0dacb; background:#fdfbf6; font-size:15px; color:#33362d; cursor:pointer; font-family:inherit; transition:background 0.2s, border-color 0.2s;";
+      if (s.selected === null) return base;
+      const opt = opts[i];
+      if (opt.isCorrect) return base + "border-color:#3f6b4a; background:#e6efe0; font-weight:600;";
+      if (i === s.selected) return base + "border-color:#b5623a; background:#f6ece5;";
+      return base + "opacity:0.6;";
+    };
+    let result = RESULTS[0];
+    if (s.phase === "finished") {
+      result = RESULTS.find(r => s.score >= r.min && s.score <= r.max) || RESULTS[0];
+    }
+    return {
+      quizIntro: s.phase === "intro",
+      quizActive: isActive,
+      quizFinished: s.phase === "finished",
+      progressLabel: String(s.current + 1),
+      scoreLabel: String(s.score),
+      qImg: q ? q.img : "",
+      qQuestion: q ? q.question : "",
+      opt0Text: opts[0] ? opts[0].text : "",
+      opt1Text: opts[1] ? opts[1].text : "",
+      opt2Text: opts[2] ? opts[2].text : "",
+      opt0Style: optStyle(0),
+      opt1Style: optStyle(1),
+      opt2Style: optStyle(2),
+      resultTitle: result.title,
+      resultText: result.text,
+      onStart: () => this._startQuiz(),
+      onRestart: () => this.setState({ phase: "intro" }),
+      onSelect0: () => this._select(0),
+      onSelect1: () => this._select(1),
+      onSelect2: () => this._select(2),
+    };
+  }
 }
 </script>
 </body>

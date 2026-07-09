@@ -52,13 +52,13 @@
     </div>
   </sc-if>
 
-  <!-- SISTE NYTT (ROTERER) -->
+  <!-- NYTT NAVN -->
   <section style="max-width:1200px; margin:20px auto 0; padding:0 32px;">
     <div style="display:flex; gap:16px; padding:22px 26px; background:#eef1e6; border:1px solid #d9e0c9; border-radius:14px; max-width:44em;">
       <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#3f6b4a; margin-top:8px;"></span>
-      <div style="min-width:0;">
-        <div style="font-size:13px; font-weight:600; color:#3f6b4a; letter-spacing:0.04em; text-transform:uppercase; margin-bottom:6px;">Siste i media</div>
-        <a id="siste-nytt-link" href="https://www.t-a.no/vant-klagesak-far-miljopris-for-innsatsen/s/5-116-2361655" target="_blank" rel="noopener" style="font-size:15.5px; color:#1c2b20; font-weight:600; text-decoration:none; display:block; transition:opacity 0.4s ease;">Vant klagesak – får miljøpris for innsatsen <span style="color:#7a7c6f; font-weight:400;">· Trønder-Avisa</span></a>
+      <div>
+        <h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Nytt navn: fra interessegruppe til forening</h3>
+        <p style="font-size:14.5px; color:#43463c; margin:0;">Vi het tidligere «Interessegruppa for bevaring av skogen i Kjønstadmarka». 28. juni 2026 ble gruppen stiftet som forening under navnet <strong>Vern Kjønstadmarka</strong>, med vedtekter og styre. Det gir oss en formell organisasjonsform — vi kan registreres i Brønnøysundregistrene, ta imot gaver og søke tilskudd — og dermed stå sterkere i saken.</p>
       </div>
     </div>
   </section>
@@ -301,10 +301,6 @@
           <img src="images/kart-plankart.png" alt="Plankart for Kjønstadmarka 4: gule felt er boliger, grå er veier — lagt midt i dagens skog" style="width:100%; height:auto; display:block;">
           <figcaption style="padding:16px 20px; font-size:13.5px; color:#5b5d51; line-height:1.5;"><strong style="color:#1c2b20;">Dette bygges ned.</strong> Plankartet viser selve planområdet: gule felt er boliger, grått er veier — lagt tvers gjennom dagens skog. <span style="color:#8a8571;">Plankart: KU friluftsliv, Sweco 29.06.2026 (figur 1-2).</span></figcaption>
         </figure>
-        <figure style="margin:0; background:#fff; border:1px solid #e6e1d4; border-radius:16px; overflow:hidden; display:flex; flex-direction:column;">
-          <img src="images/kart-stier-v2.png" alt="Illustrasjon av utbygd Kjønstadmarka 4 sett fra lufta, med stier som fjernes markert i gult" style="width:100%; height:auto; display:block;">
-          <figcaption style="padding:16px 20px; font-size:13.5px; color:#5b5d51; line-height:1.5;"><strong style="color:#1c2b20;">Slik blir det seende ut.</strong> Utbyggingen sett fra lufta — de gule stiene fjernes. Mindre stier er ikke engang markert på kartet. <span style="color:#8a8571;">Illustrasjon: KU friluftsliv, Sweco 29.06.2026 (figur 4-8).</span></figcaption>
-        </figure>
         <figure style="grid-column:1/-1; margin:0; background:#fff; border:1px solid #e6e1d4; border-radius:16px; overflow:hidden; display:flex; flex-direction:column;">
           <img src="images/kart-stinett.png" alt="Kart over dagens stinett i Kjønstadmarka, med hovedstier og alle mindre stier" style="width:100%; height:auto; display:block;">
           <figcaption style="padding:16px 20px; font-size:13.5px; color:#5b5d51; line-height:1.5;"><strong style="color:#1c2b20;">Dagens stinett — det som faktisk brukes.</strong> Kartet viser hele nettverket av stier i marka, også de mange småstiene barn og turgåere bruker daglig. Sammenlign med illustrasjonen over: småstiene er ikke tegnet inn der, og mange av dem ligger i området som bygges ned. <span style="color:#8a8571;">Kart: KU friluftsliv, Sweco 29.06.2026 (figur 3-1).</span></figcaption>
@@ -459,7 +455,7 @@
         <p style="font-size:15px; color:#9db892; margin:0 0 22px; max-width:32em;">Vi bruker appen <strong style="color:#e2e6d8;">Spond</strong> for å organisere aktiviteter og dele informasjon. Åpne lenken for å melde deg inn.</p>
 
         <div style="background:#24422e; border:1px solid #37483080; border-radius:14px; padding:20px 22px; margin:0 0 24px; max-width:34em;">
-          <button onclick="{{ toggleVedtekter }}" style="background:none; border:none; padding:0; cursor:pointer; display:flex; align-items:center; gap:8px; color:#e2e6d8; font-size:15px; font-weight:600; font-family:inherit;">
+          <button onClick="{{ toggleVedtekter }}" style="background:none; border:none; padding:0; cursor:pointer; display:flex; align-items:center; gap:8px; color:#e2e6d8; font-size:15px; font-weight:600; font-family:inherit;">
             <span style="display:inline-block; transition:transform 0.2s;{{ vedtekterArrowStyle }}">▸</span> Les vedtektene før du melder deg inn
           </button>
           <sc-if value="{{ vedtekterOpen }}" hint-placeholder-val="{{ false }}">
@@ -475,14 +471,15 @@
             </div>
           </sc-if>
           <label style="display:flex; align-items:flex-start; gap:10px; margin-top:16px; font-size:14px; color:#c3c9b7; cursor:pointer;">
-            <input type="checkbox" checked="{{ vedtekterAccepted }}" onchange="{{ toggleAccepted }}" style="margin-top:3px; width:16px; height:16px; accent-color:#9db892; flex:0 0 auto;">
+            <input type="checkbox" checked="{{ vedtekterAccepted }}" onChange="{{ toggleAccepted }}" style="margin-top:3px; width:16px; height:16px; accent-color:#9db892; flex:0 0 auto;">
             <span>Jeg har lest og godtar vedtektene for Vern Kjønstadmarka</span>
           </label>
         </div>
         <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center;">
-          <a href="https://spond.com/invite/CXRLH" target="_blank" rel="noopener" onclick="{{ onJoinClick }}" style="background:#f6f4ee; color:#1f3a2b; text-decoration:none; padding:15px 28px; border-radius:999px; font-weight:700; font-size:16px;{{ joinButtonStyle }}">Meld deg inn via Spond</a>
+          <a href="https://spond.com/invite/CXRLH" target="_blank" rel="noopener" onClick="{{ onJoinClick }}" style="background:#f6f4ee; color:#1f3a2b; text-decoration:none; padding:15px 28px; border-radius:999px; font-weight:700; font-size:16px;{{ joinButtonStyle }}">Meld deg inn via Spond</a>
           <span style="font-size:14px; color:#9db892;">Gratis app · tar under ett minutt</span>
         </div>
+        <p style="font-size:14.5px; color:#9db892; margin:22px 0 10px; max-width:32em;">Har du ikke Spond, men vil bli medlem likevel? <a href="mailto:vern.kjonstadmarka@proton.me?subject=Innmelding%20i%20Vern%20Kj%C3%B8nstadmarka&body=Fornavn%3A%0AEtternavn%3A%0ATelefonnummer%3A%0AAdresse%3A%0AE-post%3A" style="color:#e2e6d8; font-weight:600; text-decoration:underline;">Send oss en e-post</a> med navn, telefonnummer, adresse og e-post — vi melder deg inn manuelt.</p>
         <sc-if value="{{ showAcceptHint }}" hint-placeholder-val="{{ false }}">
           <p style="font-size:13.5px; color:#e2b48f; margin:10px 0 0;">Kryss av at du har lest vedtektene før du melder deg inn.</p>
         </sc-if>
@@ -495,17 +492,6 @@
           <li style="display:flex; gap:12px; font-size:15px; color:#e2e6d8;"><span style="color:#9db892;">✓</span> Invitasjon til folkemøter og dugnad</li>
           <li style="display:flex; gap:12px; font-size:15px; color:#e2e6d8;"><span style="color:#9db892;">✓</span> Stemmerett på årsmøtet (fra 18 år)</li>
         </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- NYTT NAVN -->
-  <section style="max-width:1200px; margin:0 auto; padding:0 32px 20px;">
-    <div style="display:flex; gap:16px; padding:22px 26px; background:#eef1e6; border:1px solid #d9e0c9; border-radius:14px; max-width:44em;">
-      <span style="flex:0 0 auto; width:8px; height:8px; border-radius:50%; background:#3f6b4a; margin-top:8px;"></span>
-      <div>
-        <h3 style="font-size:16.5px; margin:0 0 6px; color:#1c2b20;">Nytt navn: fra interessegruppe til forening</h3>
-        <p style="font-size:14.5px; color:#43463c; margin:0;">Vi het tidligere «Interessegruppa for bevaring av skogen i Kjønstadmarka». 28. juni 2026 ble gruppen stiftet som forening under navnet <strong>Vern Kjønstadmarka</strong>, med vedtekter og styre. Det gir oss en formell organisasjonsform — vi kan registreres i Brønnøysundregistrene, ta imot gaver og søke tilskudd — og dermed stå sterkere i saken.</p>
       </div>
     </div>
   </section>
@@ -598,30 +584,9 @@ class Component extends DCLogic {
       el.style.opacity = "0";
       setTimeout(() => { el.src = photos[i]; el.style.opacity = "1"; }, 800);
     }, 10000);
-    this._startNewsRotator();
   }
   componentWillUnmount() {
     if (this._heroTimer) clearInterval(this._heroTimer);
-    if (this._newsTimer) clearInterval(this._newsTimer);
-  }
-  _startNewsRotator() {
-    const news = [
-      { href: "https://www.t-a.no/vant-klagesak-far-miljopris-for-innsatsen/s/5-116-2361655", title: "Vant klagesak – får miljøpris for innsatsen", src: "Trønder-Avisa" },
-      { href: "https://www.innherred.no/debatt/o/lnOqB9/kommunen-maa-fullfoere-reguleringen-av-kjoenstadmarka", title: "Kommunen må fullføre reguleringen av Kjønstadmarka", src: "Innherred.no" },
-      { href: "https://www.innherred.no/debatt/o/ln4ovy/kjoenstadmarka-4-tomter-naa-eller-helse-og-naermiljoe-paa-lang-sikt", title: "Kjønstadmarka 4: Tomter nå – eller helse og nærmiljø på lang sikt?", src: "Innherred.no" }
-    ];
-    const el = document.getElementById("siste-nytt-link");
-    if (!el) return;
-    let i = 0;
-    this._newsTimer = setInterval(() => {
-      i = (i + 1) % news.length;
-      el.style.opacity = "0";
-      setTimeout(() => {
-        el.href = news[i].href;
-        el.innerHTML = news[i].title + ' <span style="color:#7a7c6f; font-weight:400;">· ' + news[i].src + '</span>';
-        el.style.opacity = "1";
-      }, 400);
-    }, 8000);
   }
   renderVals() {
     const accepted = this.state.vedtekterAccepted;
